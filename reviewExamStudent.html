@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>Review Exam</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h2 style = "text-align:start">Review Exam</h2>
+        <form name="alpha" action="alpha.php" method="post">
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='examNames'></div> 
+
+                 <input type="text" size="2" maxlength="3" name="examId" id="examId" /></input>  
+                 <input id="examId" onclick="reviewExamPost(); document. getElementById('examId').value = '' " type="button" class="button" value="Exam Id"> </input></p>
+
+                 <div style = "text-align:center; border: 1px solid black; width: 600px" id='testQ'></div> <br/>
+
+                 <input id="back" onclick="window.location.href = 'studentMenu.html'" type="button" class="button" value="Back">
+                 <!-- <input id="submit" onclick="checkCookie()" type="button" value="cookie check"></input></p> -->
+            </input></p>
+        </form>
+        
+        <p id='backDiv'></p> <br />
+
+        <script>
+            clearDivs();
+            getExamIds();
+            function clearDivs(){
+                document.getElementById("testQ").style.display = "none";
+            }
+
+            function reviewExamPost(){
+                document.getElementById("testQ").style.display = "block";
+                document.getElementById("examNames").style.display = "none";
+                var xhttp = new XMLHttpRequest();
+                var testQ = document.getElementById('testQ');
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        var response = JSON.parse(this.responseText); 
+                        console.log(response);
+                        if(response.instructor_reviewed == true){
+                        document.getElementById("testQ").innerHTML = response.exam_name + "<br/><br/>"; 
+                        for(i = 0; i < response.answer_list.length; i++){
+                            //console.log(response.answer_list[i]);
+                            //console.log(response.instructor_reviewed);
+                                var ele = document.createElement("div");
+                                ele.setAttribute("id", "testDiv"+i);
+                                ele.setAttribute("class", "inner");
+                                ele.innerHTML = "Question ID: " + response.answer_list[i].question_id + ", " + response.answer_list[i].question_text + 
+                                "<br/>Your Answer: " + response.answer_list[i].answer_text +
+                                "<br/>";
+                                testQ.appendChild(ele);
+                                for(g = 0; g < response.answer_list[i].test_list.length; g++){
+                                    var tom = document.createElement("div");
+                                    tom.innerHTML = response.answer_list[i].test_list[g].msg + ", points: " + response.answer_list[i].test_list[g].instructor_score + "<br/>";
+                                    testQ.appendChild(tom);
+                                }
+                                var joy = document.createElement("div");
+                                joy.innerHTML = "Instructor Comment: " + response.answer_list[i].instructor_comment + "<br/>";
+                                testQ.appendChild(joy);
+
+                                var tom = document.createElement("div");
+                                tom.innerHTML = "Score: " + response.answer_list[i].instructor_score + "/" + response.answer_list[i].possible_points;
+                                testQ.appendChild(tom);
+                                
+                                /*
+                                for(j = 0; j < response.answer_list[i].test_list[j].length; j++){
+                                    var ans = document.createElement("an");
+                                    an.innerHTML = "Function name test: " + response.answer_list[i].test_list[j];
+                                    testQ.appendChild(ele);
+                                }
+                                */
+                                var NL = document.createElement("nl");
+                                NL.innerHTML = "<br/>";
+                                testQ.appendChild(NL);
+                            }
+                            scor = 0;
+                            totscor = 0;
+                            for(c = 0; c < response.answer_list.length; c++){
+                                scor += parseInt(response.answer_list[c].instructor_score);
+                                totscor += parseInt(response.answer_list[c].possible_points);
+                            }
+                            var clay = document.createElement("nl");
+                            clay.innerHTML = "Total score: " + scor + "/" + totscor;
+                            testQ.appendChild(clay);
+                        }
+                        else{
+                                document.getElementById("testQ").innerHTML = "Instructor has not Reviewed Exam yet";
+                            }
+                    }
+                }
+                var req = "&exam_id=" + document.getElementById("examId").value + 
+                "&student_id=" + checkCookie();
+                //console.log(req);
+                xhttp.open("POST", "reviewExamStudent.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+                    
+            }
+
+            function getExamIds(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText); 
+                        var response = JSON.parse(this.responseText);
+                        for(i = 0; i < response.exam_list.length; i++){
+                            var toy = document.createElement("nl");
+                            toy.innerHTML = "Exam Name: " + response.exam_list[i].exam_name + ", Exam ID: " + response.exam_list[i].exam_id + "<br/>";
+                            examNames.appendChild(toy);
+                        }
+                    }
+                }
+                req = "&request=exam_names";
+                xhttp.open("POST", "getExamIds.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+            }
+            
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var k = 0; k < ca.length; k++) {
+                    var c = ca[k];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                var userId = getCookie("user_id");
+                //document.getElementById("backDiv").innerHTML = userId
+                return userId;
+            }
+
+        </script>
+    </body>
+</html>
