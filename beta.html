@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Beta Login Screen</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h2 style = "text-align:center">Login Screen</h2>
+        <form name="beta" action="beta.php" method="post">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Ucid:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="username" id="username" /></p>
+            <p>Password: <input type="password" name="password" id="password" /></p>
+            <p><input type="reset" onclick="clearDiv()" class="button" value="Clear Form" />&nbsp; 
+            &nbsp;
+            <input id="submit" onclick="postRequest()" type="button" class="button" value="Submit"></input></p>
+            <!-- <input id="back" onclick="window.location.href = 'instructorMenu.html'" class="button" type="button" value="Instructor Menu"> </input></p>
+            <input id="studentMenu" onclick="window.location.href = 'studentMenu.html'" class="button" type="button" value="Student Menu"></input></p> -->
+        </form>
+        <p id='backDiv'></p> <br />
+        
+        <script>
+                function postRequest(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+
+                        //document.getElementById("backDiv").innerHTML = this.responseText;
+                        console.log(this.responseText); 
+                        var response = JSON.parse(this.responseText);
+                        if(response.valid_login == true && response.ACCOUNT_TYPE == "INSTRUCTOR"){
+                            //SET COOKIE
+                            document.cookie = "user_id=" + response.user_id + ";";
+                            window.location.href = "instructorMenu.html";
+                        }
+                        else if(response.valid_login == true && response.ACCOUNT_TYPE == "STUDENT"){
+                            //SET COOKIE
+                            document.cookie = "user_id=" + response.user_id + ";";
+                            window.location.href = "studentMenu.html";
+                        }
+                        else {
+                            document.getElementById("backDiv").innerHTML = "LOGIN FAILED";
+                        }
+                        
+                    }
+                }
+            
+                var req = "&username=" + document.getElementById("username").value + 
+                "&password=" + document.getElementById("password").value;
+                xhttp.open("POST", "beta.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+                }
+                /*
+                function getUserId(){
+                    var name = "user_id=";
+                    var decodedCookie = decodeURIComponent(document.cookie);
+                    var ca = decodedCookie.split(';');
+                    for(var i = 0; i < ca.length; i++){
+                        var c = ca[i];
+                        while(c.charAt(0) == ' '){
+                            c = c.substring(1);
+                        }
+                        if(c.indexOf(name) == 0){
+                            return c.subtring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+                */
+
+                function clearDiv(){
+                    document.getElementById("backDiv").innerHTML = "";
+                }
+        </script>
+    </body>
+
+</html>
