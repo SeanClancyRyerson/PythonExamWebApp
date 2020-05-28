@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <title>Take Exam</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h2 style = "text-align:start">Take Exam</h2>
+        <form name="alpha" action="alpha.php" method="post">
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='examNames'></div> 
+
+            <input type="text" size="2" maxlength="3" name="examId" id="examId" /></input> 
+            <input id="examIdButton" onclick="getExam()" type="button" class="button" value="Exam Id"> </input></p>
+            <!-- EXAM NAME TEXT BOX-->
+            <div style = "text-align:center; border: 1px solid black; width: 200px" id='examName'></div> <br/>
+
+            <!-- QUESTION DIV TEX BOX-->
+            <!-- CAN ADD POINT VALUE INTO DIV -->
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question0'></div> 
+
+            <!-- ANSWER INPUT -->
+            <textarea type="text" name="answer0" id="answer0" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question1'></div> 
+
+            <!-- ANSWER INPUT -->
+            <textarea type="text" name="answer1" id="answer1" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question2'></div> 
+            <textarea type="text" name="answer2" id="answer2" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question3'></div> 
+            <textarea type="text" name="answer3" id="answer3" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question4'></div> 
+            <textarea type="text" name="answer4" id="answer4" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question5'></div>
+            <textarea type="text" name="answer5" id="answer5" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question6'></div> 
+            <textarea type="text" name="answer6" id="answer6" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question7'></div> 
+            <textarea type="text" name="answer7" id="answer7" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question8'></div>
+            <textarea type="text" name="answer8" id="answer8" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='question9'></div> 
+            <textarea type="text" name="answer9" id="answer9" style = "width: 600px; height: 200px;" ></textarea> 
+
+            <!-- SUBMIT BUTTON -->
+            <input id="submit" onclick="submitExam()" type="button" class="button" value="Submit"></input></p>
+
+            <!-- BACK BUTTON TO STUDENT MENU -->
+            <input id="back" onclick="window.location.href = 'studentMenu.html'" type="button" class="button" value="Back"></input></p>
+            <!-- <input id="submit" onclick="checkCookie()" type="button" value="cookie check"></input></p> -->
+        </form>
+
+        <!-- <p id='backDiv'></p> <br /> -->
+
+        <script>
+            //document.getElementById("examName").innerHTML = "Exam Name Temp";
+            clearDivs();
+            getExamIds();
+            var numQ = 0;
+            var tempAnswers = "";
+
+            function clearDivs(){
+                document.getElementById("examName").style.display = "none";
+                document.getElementById("question0").style.display = "none";
+                document.getElementById("question1").style.display = "none";
+                document.getElementById("answer0").style.display = "none";
+                document.getElementById("answer1").style.display = "none";
+                document.getElementById("question2").style.display = "none";
+                document.getElementById("answer2").style.display = "none";
+                document.getElementById("question3").style.display = "none";
+                document.getElementById("answer3").style.display = "none";
+                document.getElementById("question4").style.display = "none";
+                document.getElementById("answer4").style.display = "none";
+                document.getElementById("question5").style.display = "none";
+                document.getElementById("answer5").style.display = "none";
+                document.getElementById("question6").style.display = "none";
+                document.getElementById("answer6").style.display = "none";
+                document.getElementById("question7").style.display = "none";
+                document.getElementById("answer7").style.display = "none";
+                document.getElementById("question8").style.display = "none";
+                document.getElementById("answer8").style.display = "none";
+                document.getElementById("question9").style.display = "none";
+                document.getElementById("answer9").style.display = "none";
+            }
+            //let temp = document.createElement('input');
+            //document.appendChild(temp);
+            //document.answerOne.appendChild(temp);
+
+            function getExam(){
+                clearDivs();
+                document.getElementById("examNames").style.display = "none";
+                var xhttp = new XMLHttpRequest();
+                var output = document.getElementById('question0');
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        var response = JSON.parse(this.responseText); 
+                        console.log(response);
+                        if(response.success == false){
+                            document.getElementById('examName').innerHTML = response.msg;
+                            document.getElementById("examName").style.display = "block";
+                        }
+                        else{
+                            if(response.allowed == false){
+                                document.getElementById('examName').innerHTML = response.msg;
+                                document.getElementById("examName").style.display = "block";
+                            }
+                            numQ = response.question_list.length;
+                            document.getElementById("examName").style.display = "block";
+                            document.getElementById("examName").innerHTML = response.exam_name;
+
+                            for(i = 0; i < response.question_list.length; i++){
+                                var temp = "answer" + i;
+                                //console.log(temp);
+                                document.getElementById(temp).style.display = "block";
+                                temp = "question" + i;
+                                //console.log(temp);
+                                document.getElementById(temp).style.display = "block";
+                                document.getElementById(temp).innerHTML ="Points: " + response.question_list[i].points + 
+                            ", Function Name: " + response.question_list[i].func_name + ", Arguments: " + response.question_list[i].arguments + "<br/>" +
+                            "Description: " + response.question_list[i].description;
+                        }
+                    }
+                    }
+                }
+                
+                var req = "&exam_id=" + document.getElementById("examId").value + 
+                "&user_id=" + checkCookie();
+                //console.log(checkCookie());
+                xhttp.open("POST", "getExam.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+                
+            }
+
+            function getExamIds(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText); 
+                        var response = JSON.parse(this.responseText);
+                        for(i = 0; i < response.exam_list.length; i++){
+                            var toy = document.createElement("nl");
+                            toy.innerHTML = "Exam Name: " + response.exam_list[i].exam_name + ", Exam ID: " + response.exam_list[i].exam_id + "<br/>";
+                            examNames.appendChild(toy);
+                        }
+                    }
+                }
+                req = "&request=exam_names";
+                xhttp.open("POST", "getExamIds.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+            }
+
+            function submitHelper(){
+                var o = 1;
+                        for(p = 0; p < numQ; p++){
+                            var ans = "answer" + p;
+                            tempAnswers = tempAnswers + "&question_" + o + "_answer=" + encodeURIComponent(document.getElementById(ans).value);
+                            o++;
+                        }
+                        console.log(tempAnswers);
+            }
+
+            function submitExam(){
+                submitHelper();
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText);
+                        clearDivs();
+                        //var response = JSON.parse(this.responseText); 
+                        document.getElementById("examName").innerHTML = "EXAM SUBMITTED SUCCESSFULLY";
+                        document.getElementById("examName").style.display = "block";
+                        //console.log(response);
+                    }
+                }
+                var req = "&exam_id=" + document.getElementById("examId").value + 
+                "&user_id=" + checkCookie() + "&question_num=" + numQ + tempAnswers;
+                console.log(req);
+                xhttp.open("POST", "takeExam.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(req);
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                var userId = getCookie("user_id");
+                //document.getElementById("backDiv").innerHTML = userId
+                return userId;
+            }
+        </script>
+    </body>
+</html>
