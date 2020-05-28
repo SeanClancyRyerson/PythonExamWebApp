@@ -1,0 +1,326 @@
+<html>
+    <head>
+        <title>Add Questions</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            div.relative {
+                position: absolute;
+                left: 700px;
+                top: 260px;
+            }
+            select.rel{
+                background-color: red;
+                border: 3px solid red;
+                color: white;
+                padding: 5px 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                border-radius: 5px;
+                transition-duration: 0.2s;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 style = "text-align:center">Add Questions</h2>
+        <form name="beta" action="addQuestion.php" method="post">
+            Topic
+            <select id="topic" class="button"> 
+                <option value="NONE">No topic filter</option>
+                <option value="Lists">Lists</option>
+                <option value="Turtles">Turtles</option>
+                <option value="If">If statements</option>
+                <option value="For loops">For loops</option>
+                <option value="Def">Def</option>
+                <option value="While">While loops</option>
+                <option value="String methods">String methods</option>
+                <option value="Files">Files</option>
+                <option value="Dictionaries">Dictionaries</option>
+                <option value="Namespaces">Namespaces</option>
+                <option value="Exceptions">Exceptions</option>
+                <option value="Classes">Classes</option>
+            </select> <br/> <br/>
+
+            Difficulty
+            <select id="difficulty" class="button"> 
+                <option value="NONE">No difficulty filter</option>
+                <option value="EASY">Easy</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HARD">Hard</option>
+            </select> <br/> <br/>
+
+            Constraint
+            <select id="constraint" class="button"> 
+                <option value="NONE">No Constraint</option>
+                <option value="IF">If</option>
+                <option value="FOR">For</option>
+                <option value="WHILE">While</option>
+                <option value="PRINT">Print</option>
+            </select> <br/> <br/>
+
+            <!-- input for name of function -->
+            Name of Function <br/>
+            <input type="text" name="functionName" id="functionName" /></p>
+            Arguments <br/>
+            <input type="text" name="arguments" id="arguments" /></p>
+            <!-- input for desciption of function -->
+            Desciption of Function <br/>
+            <textarea type="text" style="width: 360px; height: 120px;" name="functionDesc" id="functionDesc" ></textarea></p>
+
+            <div> Input 1</div>
+            <input type="text" name="testIn1" id="testIn1" /></p>
+            <div style="position: relative; left: 180px; bottom: 55px;" id='TopicFilter'>Output 1</div>
+            <input type="text" style="position: relative; left: 180px; bottom: 55px" name="testOut1" id="testOut1" /></p>
+            
+            <div style="position: relative; bottom: 50px;">Input 2</div>
+            <input type="text" style="position: relative; bottom: 50px;" name="testIn2" id="testIn2" /></p>
+            <div style="position: relative; left: 180px; bottom: 105px;" id='TopicFilter'>Output 2</div>
+            <input type="text" style="position: relative; left: 180px; bottom: 105px" name="testOut2" id="testOut2" /></p>
+
+            <div style="position: relative; bottom: 100px;">Input 3</div>
+            <input type="text" style="position: relative; bottom: 100px;" name="testIn3" id="testIn3" /></p>
+            <div style="position: relative; left: 180px; bottom: 155px;" id='TopicFilter'>Output 3</div>
+            <input type="text" style="position: relative; left: 180px; bottom: 155px" name="testOut3" id="testOut3" /></p>
+
+
+            <div style="position: relative; bottom: 150px;">Input 4</div>
+            <input type="text" style="position: relative; bottom: 150px;" name="testIn4" id="testIn4" /></p>
+            <div style="position: relative; left: 180px; bottom: 205px;" id='TopicFilter'>Output 4</div>
+            <input type="text" style="position: relative; left: 180px; bottom: 205px" name="testOut4" id="testOut4" /></p>
+
+
+            <div style="position: relative; bottom: 200px;">Input 5</div>
+            <input type="text" style="position: relative; bottom: 200px;" name="testIn5" id="testIn5" /></p>
+            <div style="position: relative; left: 180px; bottom: 255px;" id='TopicFilter'>Output 5</div>
+            <input type="text" style="position: relative; left: 180px; bottom: 255px" name="testOut5" id="testOut5" /></p>
+
+            <div style="position: relative; bottom: 250px;">Input 6</div>
+            <input type="text" style="position: relative; bottom: 250px;" name="testIn6" id="testIn6" /></p>
+            <div style="position: relative; left: 180px; bottom: 305px;" id='TopicFilter'>Output 6</div>
+            <input type="text" style="position: relative; left: 180px; bottom: 305px" name="testOut6" id="testOut6" /></p>
+
+            <input id="submit" style="position: relative; bottom: 300px;" onclick="postAdd()" class="button" type="button" value="Submit">
+            </input></p>
+
+            <input id="back" style="position: relative; bottom: 300px;" onclick="window.location.href = 'instructorMenu.html'" class="button" type="button" value="Back"></input></p>
+            <!-- filters for divbank -->
+            <div style="position: absolute; left: 700px; top: 110px;" id='TopicFilter'>Topic</div>
+            <select style="position: absolute; left: 750px; top: 100px;" id="topicBank" class="button; rel"  onchange="postFilter()"> 
+                <option value="NONE">No topic filter</option>
+                <option value="Lists">Lists</option>
+                <option value="Turtles">Turtles</option>
+                <option value="If">If statements</option>
+                <option value="For loops">For loops</option>
+                <option value="Def">Def</option>
+                <option value="While">While loops</option>
+                <option value="String methods">String methods</option>
+                <option value="Files">Files</option>
+                <option value="Dictionaries">Dictionaries</option>
+                <option value="Namespaces">Namespaces</option>
+                <option value="Exceptions">Exceptions</option>
+                <option value="Classes">Classes</option>
+            </select> <br/> <br/>
+
+            <div style="position: absolute; left: 700px; top: 160px;" >Difficulty</div>
+            <select style="position: absolute; left: 770px; top: 150px;" id="difficultyBank" class="button; rel" onchange="postFilter()"> 
+                <option value="NONE">No difficulty filter</option>
+                <option value="EASY">Easy</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HARD">Hard</option>
+            </select> <br/> <br/>
+
+            <div style="position: absolute; left: 700px; top: 210px;" >Keyword</div>
+            <input style="position: absolute; left: 780px; top: 210px;" type="text" name="keyWord" id="keyWord" /></p>
+            <input id="keyWordSearch" onclick="postFilterKeyword()" style="position: absolute; left: 970px; top: 205px;" class="button" type="button" value="Search">
+        </form> 
+        <!-- OUTPUT DIV-->
+        <div style = "text-align:center; border: 1px solid black; width: 800px" class="relative" id='output'></div>
+
+        <script>
+            postFilter();
+            
+            function clearText(){
+                document.getElementById('functionName').value = '';
+                document.getElementById('arguments').value = '';
+                document.getElementById('functionDesc').value = '';
+                document.getElementById('testIn1').value = '';
+                document.getElementById('testOut1').value = '';
+                document.getElementById('testIn2').value = '';
+                document.getElementById('testOut2').value = '';
+                document.getElementById('testIn3').value = '';
+                document.getElementById('testOut3').value = '';
+                document.getElementById('testIn4').value = '';
+                document.getElementById('testOut4').value = '';
+                document.getElementById('testIn5').value = '';
+                document.getElementById('testOut5').value = '';
+                document.getElementById('testIn6').value = '';
+                document.getElementById('testOut6').value = '';
+            }
+
+
+            function helpMe(){
+                var output = document.getElementById('output');
+                var i=1;
+                //var val="";
+                while(i<=3)
+                {
+                    if(!document.getElementById('testDiv'+i))
+                    {
+                        var ele = document.createElement("div");
+                        ele.setAttribute("id","testDiv"+i);
+                        ele.setAttribute("class","inner");
+                        ele.innerHTML="hello "+i;
+                        output.appendChild(ele);
+                    }
+                    i++;
+                }
+            }
+
+            function postFilter(){
+                clearDiv();
+                var xhttp = new XMLHttpRequest();
+                var output = document.getElementById('output');
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+
+                        //console.log(this.responseText); 
+                        var response = JSON.parse(this.responseText);
+                        console.log(response);
+                        /*
+                        Proposed JSON format: { â€œquestion_listâ€: [ {â€œQIDâ€:<unique ID of question in database>, 
+                        â€œtopicâ€:<TOPIC>, â€œdifficultyâ€:<DIFFICULTY>, â€œfunc_nameâ€:<FUNCTION_NAME>, â€œargumentsâ€:<ARGUMENTS>, 
+                        â€œdescriptionâ€:<DESCRIPTION>, â€œtest_casesâ€:<TEST_CASES> }, â€¦ ] }
+                        */
+                        //console.log(response.question_list[1]);
+                        if(response.question_list.length == 0){
+                            document.getElementById('output').innerHTML = "NO QUESTIONS MEET YOUR FILTERS";
+                        }
+                        else{
+                        for(i = 0; i < response.question_list.length; i++){
+                            //console.log(response.question_list[i]);
+                            var ele = document.createElement("div");
+                            ele.setAttribute("id", "testDiv"+i);
+                            ele.setAttribute("class", "inner");
+                            ele.innerHTML = "Function Name: " + response.question_list[i].func_name + ", Arguments: " + response.question_list[i].arguments + ", Constraints: " + response.question_list[i].constraint + "<br/>Description: " + response.question_list[i].description;
+                            output.appendChild(ele);
+
+                            for(j = 0; j < response.question_list[i].test_cases.length; j++){
+                                var tC = document.createElement("case");
+                                tC.innerHTML = "Input " + (j+1) + ": " + response.question_list[i].test_cases[j].input + " Output " + (j+1) + ": " + response.question_list[i].test_cases[j].output + "<br/>";
+                                output.appendChild(tC);
+                            }
+                            var NL = document.createElement("nl");
+                            NL.innerHTML = "<br/>";
+                            output.appendChild(NL);
+                        }
+                        }
+                    }
+                }
+                var req = "&topic=" + document.getElementById("topicBank").value + 
+                "&difficulty=" + document.getElementById("difficultyBank").value;
+                xhttp.open("POST", "filterQuestion.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+            }
+
+            function postFilterKeyword(){
+                clearDiv();
+                console.log(document.getElementById("keyWord").value);
+                var xhttp = new XMLHttpRequest();
+                var output = document.getElementById('output');
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        var response = JSON.parse(this.responseText);
+                        console.log(response);
+                        if(response.question_list.length == 0){
+                            document.getElementById('output').innerHTML = "NO QUESTIONS MEET YOUR FILTERS";
+                        }
+                        else{
+                            for(i = 0; i < response.question_list.length; i++){
+                                var str = response.question_list[i].description; 
+                                var n = str.search(document.getElementById("keyWord").value);
+                                if(n != -1){
+                                    var ele = document.createElement("div");
+                                    ele.setAttribute("id", "testDiv"+i);
+                                    ele.setAttribute("class", "inner");
+                                    ele.innerHTML = "Function Name: " + response.question_list[i].func_name + ", Arguments: " + response.question_list[i].arguments + ", Constraints: " + response.question_list[i].constraint + "<br/>Description: " + response.question_list[i].description;
+                                    output.appendChild(ele);
+
+                                    for(j = 0; j < response.question_list[i].test_cases.length; j++){
+                                        var tC = document.createElement("case");
+                                        tC.innerHTML = "Input " + (j+1) + ": " + response.question_list[i].test_cases[j].input + " Output " + (j+1) + ": " + response.question_list[i].test_cases[j].output + "<br/>";
+                                        output.appendChild(tC);
+                                    }
+                                    var NL = document.createElement("nl");
+                                    NL.innerHTML = "<br/>";
+                                    output.appendChild(NL);
+                                }
+                            }
+                        }
+                    }
+                }
+                var req = "&topic=" + document.getElementById("topicBank").value + 
+                "&difficulty=" + document.getElementById("difficultyBank").value;
+                xhttp.open("POST", "filterQuestion.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+            }
+
+            function postAdd(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+
+                        document.getElementById("output").innerHTML = "Successfully Added Question to Bank";
+                        clearText();
+                    }
+                    
+                }
+                
+                var req = 
+                "&topic=" + document.getElementById("topic").value + 
+                "&difficulty=" + document.getElementById("difficulty").value + 
+                "&func_name=" + encodeURIComponent(document.getElementById("functionName").value) + 
+                "&arguments=" + encodeURIComponent(document.getElementById("arguments").value) + 
+                "&description=" + encodeURIComponent(document.getElementById("functionDesc").value) + 
+                "&testcase1_input=" + encodeURIComponent(document.getElementById("testIn1").value) + 
+                "&testcase1_output=" + encodeURIComponent(document.getElementById("testOut1").value) + 
+                "&testcase2_input=" + encodeURIComponent(document.getElementById("testIn2").value) + 
+                "&testcase2_output=" + encodeURIComponent(document.getElementById("testOut2").value);
+                var numCases = 2;
+                if(document.getElementById("testIn3").value != "" && document.getElementById("testOut3").value != ""){
+                    numCases = 3;
+                    req = req + "&testcase3_input=" + encodeURIComponent(document.getElementById("testIn3").value) + 
+                                "&testcase3_output=" + encodeURIComponent(document.getElementById("testOut3").value);
+                }
+                if(document.getElementById("testIn4").value != "" && document.getElementById("testOut4").value != ""){
+                    numCases = 4;
+                    req = req + "&testcase4_input=" + encodeURIComponent(document.getElementById("testIn4").value) + 
+                                "&testcase4_output=" + encodeURIComponent(document.getElementById("testOut4").value);
+                }
+                if(document.getElementById("testIn5").value != "" && document.getElementById("testOut5").value != ""){
+                    numCases = 5;
+                    req = req + "&testcase5_input=" + encodeURIComponent(document.getElementById("testIn5").value) + 
+                                "&testcase5_output=" + encodeURIComponent(document.getElementById("testOut5").value);
+                }
+                if(document.getElementById("testIn6").value != "" && document.getElementById("testOut6").value != ""){
+                    numCases = 6;
+                    req = req + "&testcase6_input=" + encodeURIComponent(document.getElementById("testIn6").value) + 
+                                "&testcase6_output=" + encodeURIComponent(document.getElementById("testOut6").value);
+                }
+                req = req + "&numCases=" + numCases + "&constraint=" + document.getElementById("constraint").value;
+                console.log(req);
+
+                xhttp.open("POST", "addQuestion.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(req);
+            }
+
+            function clearDiv(){
+                document.getElementById("output").innerHTML = "";
+            }
+
+        </script>
+    </body>
+</html>
