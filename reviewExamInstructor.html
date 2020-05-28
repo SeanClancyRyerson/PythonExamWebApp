@@ -1,0 +1,924 @@
+<html>
+    <head>
+        <title>Review Exams</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 style = "text-align:start">Review Exam</h2>
+        <form name="alpha" action="alpha.php" method="post">
+
+            <div style = "text-align:center; border: 1px solid black; width: 600px" id='examNames'></div> 
+
+                 Exam ID:
+                 <input type="text" size="2" maxlength="3" name="examId"  id="examId" /></input>  
+                 Student ID: 
+                 <input type="text" size="2" maxlength="3" name="studentId"  id="studentId" /></input>
+                 <input id="exam_Id" onclick="reviewTable()" type="button" class="button" value="Get Exam"> </input></p>
+                
+                 <div style = "text-align:left" id='testQ'></div>           
+
+                 <div style = "text-align:center; border: 1px solid black; width: 50%" id='question1'></div>
+                 <table id="gradeTable1" style="width: 50%">
+                    <tr>
+                        <th>Test</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test1">Function</td>
+                        <td id="1auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new1" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test1">Colon</td>
+                        <td id="2auto1"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new1" /></td>
+                    </tr>
+                    <tr id="cons1">
+                        <td id="3test1">Constraint</td>
+                        <td id="3auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new1" /></td>
+                    </tr>
+                    <tr id="row1Test1">
+                        <td id="4test1">Test 1</td>
+                        <td id="4auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new1" /></td>
+                    </tr>
+                    <tr id="row2Test1">
+                        <td id="5test1">Test 2</td>
+                        <td id="5auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new1" /></td>
+                    </tr>
+                    <tr id="row3Test1">
+                        <td id="6test1">Test 3</td>
+                        <td id="6auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new1" /></td>
+                    </tr>
+                    <tr id="row4Test1">
+                        <td id="7test1">Test 4</td>
+                        <td id="7auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new1" /></td>
+                    </tr>
+                    <tr id="row5Test1">
+                        <td id="8test1">Test 5</td>
+                        <td id="8auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new1" /></td>
+                    </tr>
+                    <tr id="row6Test1">
+                        <td id="9test1">Test 6</td>
+                        <td id="9auto1"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new1" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment1" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question2'></div> 
+                <!-- TABLE 2 START-->
+                <table id="gradeTable2" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test2">Function</td>
+                        <td id="1auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new2" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test2">Colon</td>
+                        <td id="2auto2"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new2" /></td>
+                    </tr>
+                    <tr id="cons2">
+                        <td id="3test2">Constraint</td>
+                        <td id="3auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new2" /></td>
+                    </tr>
+                    <tr id="row1Test2">
+                        <td id="4test2">Test 1</td>
+                        <td id="4auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new2" /></td>
+                    </tr>
+                    <tr id="row2Test2">
+                        <td id="5test2">Test 2</td>
+                        <td id="5auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new2" /></td>
+                    </tr>
+                    <tr id="row3Test2">
+                        <td id="6test2">Test 3</td>
+                        <td id="6auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new2" /></td>
+                    </tr>
+                    <tr id="row4Test2">
+                        <td id="7test2">Test 4</td>
+                        <td id="7auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new2" /></td>
+                    </tr>
+                    <tr id="row5Test2">
+                        <td id="8test2">Test 5</td>
+                        <td id="8auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new2" /></td>
+                    </tr>
+                    <tr id="row6Test2">
+                        <td id="9test2">Test 6</td>
+                        <td id="9auto2"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new2" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment2" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question3'></div> 
+                <!-- TABLE 3 START-->
+                <table id="gradeTable3"  style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test3">Function</td>
+                        <td id="1auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new3" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test3">Colon</td>
+                        <td id="2auto3"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new3" /></td>
+                    </tr>
+                    <tr id="cons3">
+                        <td id="3test3">Constraint</td>
+                        <td id="3auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new3" /></td>
+                    </tr>
+                    <tr id="row1Test3">
+                        <td id="4test3">Test 1</td>
+                        <td id="4auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new3" /></td>
+                    </tr>
+                    <tr id="row2Test3">
+                        <td id="5test3">Test 2</td>
+                        <td id="5auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new3" /></td>
+                    </tr>
+                    <tr id="row3Test3">
+                        <td id="6test3">Test 3</td>
+                        <td id="6auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new3" /></td>
+                    </tr>
+                    <tr id="row4Test3">
+                        <td id="7test3">Test 4</td>
+                        <td id="7auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new3" /></td>
+                    </tr>
+                    <tr id="row5Test3">
+                        <td id="8test3">Test 5</td>
+                        <td id="8auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new3" /></td>
+                    </tr>
+                    <tr id="row6Test3">
+                        <td id="9test3">Test 6</td>
+                        <td id="9auto3"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new3" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment3" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question4'></div> 
+                <!-- TABLE 4 START-->
+                <table id="gradeTable4" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test4">Function</td>
+                        <td id="1auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new4" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test4">Colon</td>
+                        <td id="2auto4"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new4" /></td>
+                    </tr>
+                    <tr id="cons4">
+                        <td id="3test4">Constraint</td>
+                        <td id="3auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new4" /></td>
+                    </tr>
+                    <tr id="row1Test4">
+                        <td id="4test4">Test 1</td>
+                        <td id="4auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new4" /></td>
+                    </tr>
+                    <tr id="row2Test4">
+                        <td id="5test4">Test 2</td>
+                        <td id="5auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new4" /></td>
+                    </tr>
+                    <tr id="row3Test4">
+                        <td id="6test4">Test 3</td>
+                        <td id="6auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new4" /></td>
+                    </tr>
+                    <tr id="row4Test4">
+                        <td id="7test4">Test 4</td>
+                        <td id="7auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new4" /></td>
+                    </tr>
+                    <tr id="row5Test4">
+                        <td id="8test4">Test 5</td>
+                        <td id="8auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new4" /></td>
+                    </tr>
+                    <tr id="row6Test4">
+                        <td id="9test4">Test 6</td>
+                        <td id="9auto4"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new4" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment4" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question5'></div> 
+                <!-- TABLE 5 START-->
+                <table id="gradeTable5" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test5">Function</td>
+                        <td id="1auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new5" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test5">Colon</td>
+                        <td id="2auto5"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new5" /></td>
+                    </tr>
+                    <tr id="cons5">
+                        <td id="3test5">Constraint</td>
+                        <td id="3auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new5" /></td>
+                    </tr>
+                    <tr id="row1Test5">
+                        <td id="4test5">Test 1</td>
+                        <td id="4auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new5" /></td>
+                    </tr>
+                    <tr id="row2Test5">
+                        <td id="5test5">Test 2</td>
+                        <td id="5auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new5" /></td>
+                    </tr>
+                    <tr id="row3Test5">
+                        <td id="6test5">Test 3</td>
+                        <td id="6auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new5" /></td>
+                    </tr>
+                    <tr id="row4Test5">
+                        <td id="7test5">Test 4</td>
+                        <td id="7auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new5" /></td>
+                    </tr>
+                    <tr id="row5Test5">
+                        <td id="8test5">Test 5</td>
+                        <td id="8auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new5" /></td>
+                    </tr>
+                    <tr id="row6Test5">
+                        <td id="9test5">Test 6</td>
+                        <td id="9auto5"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new5" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment5" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question6'></div> 
+                <!-- TABLE 6 START-->
+                <table id="gradeTable6" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test6">Function</td>
+                        <td id="1auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new6" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test6">Colon</td>
+                        <td id="2auto6"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new6" /></td>
+                    </tr>
+                    <tr id="cons6">
+                        <td id="3test6">Constraint</td>
+                        <td id="3auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new6" /></td>
+                    </tr>
+                    <tr id="row1Test6">
+                        <td id="4test6">Test 1</td>
+                        <td id="4auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new6" /></td>
+                    </tr>
+                    <tr id="row2Test6">
+                        <td id="5test6">Test 2</td>
+                        <td id="5auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new6" /></td>
+                    </tr>
+                    <tr id="row3Test6">
+                        <td id="6test6">Test 3</td>
+                        <td id="6auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new6" /></td>
+                    </tr>
+                    <tr id="row4Test6">
+                        <td id="7test6">Test 4</td>
+                        <td id="7auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new6" /></td>
+                    </tr>
+                    <tr id="row5Test6">
+                        <td id="8test6">Test 5</td>
+                        <td id="8auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new6" /></td>
+                    </tr>
+                    <tr id="row6Test6">
+                        <td id="9test6">Test 6</td>
+                        <td id="9auto6"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new6" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment6" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question7'></div> 
+                <!-- TABLE 7 START-->
+                <table id="gradeTable7" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test7">Function</td>
+                        <td id="1auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new7" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test7">Colon</td>
+                        <td id="2auto7"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new7" /></td>
+                    </tr>
+                    <tr id="cons7">
+                        <td id="3test7">Constraint</td>
+                        <td id="3auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new7" /></td>
+                    </tr>
+                    <tr id="row1Test7">
+                        <td id="4test7">Test 1</td>
+                        <td id="4auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new7" /></td>
+                    </tr>
+                    <tr id="row2Test7">
+                        <td id="5test7">Test 2</td>
+                        <td id="5auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new7" /></td>
+                    </tr>
+                    <tr id="row3Test7">
+                        <td id="6test7">Test 3</td>
+                        <td id="6auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new7" /></td>
+                    </tr>
+                    <tr id="row4Test7">
+                        <td id="7test7">Test 4</td>
+                        <td id="7auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new7" /></td>
+                    </tr>
+                    <tr id="row5est7">
+                        <td id="8test7">Test 5</td>
+                        <td id="8auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new7" /></td>
+                    </tr>
+                    <tr id="row6Test7">
+                        <td id="9test7">Test 6</td>
+                        <td id="9auto7"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new7" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment7" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question8'></div> 
+                <!-- TABLE 8 START-->
+                <table id="gradeTable8" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test8">Function</td>
+                        <td id="1auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new8" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test8">Colon</td>
+                        <td id="2auto8"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new8" /></td>
+                    </tr>
+                    <tr id="cons8">
+                        <td id="3test8">Constraint</td>
+                        <td id="3auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new8" /></td>
+                    </tr>
+                    <tr id="row1Test8">
+                        <td id="4test8">Test 1</td>
+                        <td id="4auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new8" /></td>
+                    </tr>
+                    <tr id="row2Test8">
+                        <td id="5test8">Test 2</td>
+                        <td id="5auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new8" /></td>
+                    </tr>
+                    <tr id="row3Test8">
+                        <td id="6test8">Test 3</td>
+                        <td id="6auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new8" /></td>
+                    </tr>
+                    <tr id="row4Test8">
+                        <td id="7test8">Test 4</td>
+                        <td id="7auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new8" /></td>
+                    </tr>
+                    <tr id="row5Test8">
+                        <td id="8test8">Test 5</td>
+                        <td id="8auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new8" /></td>
+                    </tr>
+                    <tr id="row6Test8">
+                        <td id="9test8">Test 6</td>
+                        <td id="9auto8"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new8" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment8" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question9'></div> 
+                <!-- TABLE 9 START-->
+                <table id="gradeTable9" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test9">Function</td>
+                        <td id="1auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new9" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test9">Colon</td>
+                        <td id="2auto9"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new9" /></td>
+                    </tr>
+                    <tr id="cons9">
+                        <td id="3test9">Constraint</td>
+                        <td id="3auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new9" /></td>
+                    </tr>
+                    <tr id="row1Test9">
+                        <td id="4test9">Test 1</td>
+                        <td id="4auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new9" /></td>
+                    </tr>
+                    <tr id="row2Test9">
+                        <td id="5test9">Test 2</td>
+                        <td id="5auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new9" /></td>
+                    </tr>
+                    <tr id="row3Test9">
+                        <td id="6test9">Test 3</td>
+                        <td id="6auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new9" /></td>
+                    </tr>
+                    <tr id="row4Test9">
+                        <td id="7test9">Test 4</td>
+                        <td id="7auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new9" /></td>
+                    </tr>
+                    <tr id="row5Test9">
+                        <td id="8test9">Test 5</td>
+                        <td id="8auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new9" /></td>
+                    </tr>
+                    <tr id="row6Test9">
+                        <td id="9test9">Test 6</td>
+                        <td id="9auto9"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new9" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment9" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <div style = "text-align:center; border: 1px solid black; width: 50%" id='question10'></div> 
+                <!-- TABLE 10 START-->
+                <table id="gradeTable10" style="width: 50%">
+                    <tr>
+                        <th>Quesion Description</th>
+                        <th>AutoGrade Score</th>
+                        <th>Override Score</th>
+                    </tr>
+                    <tr>
+                        <td id="1test10">Function</td>
+                        <td id="1auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="1new10" /></input></td>
+                    </tr>
+                    <tr>
+                        <td id="2test10">Colon</td>
+                        <td id="2auto10"></td> 
+                        <td><input type="text" size="2" maxlength="3" id="2new10" /></td>
+                    </tr>
+                    <tr id="cons10">
+                        <td id="3test10">Constraint</td>
+                        <td id="3auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="3new10" /></td>
+                    </tr>
+                    <tr id="row1Test10">
+                        <td id="4test10">Test 1</td>
+                        <td id="4auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="4new10" /></td>
+                    </tr>
+                    <tr id="row2Test10">
+                        <td id="5test10">Test 2</td>
+                        <td id="5auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="5new10" /></td>
+                    </tr>
+                    <tr id="row3Test10">
+                        <td id="6test10">Test 3</td>
+                        <td id="6auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="6new10" /></td>
+                    </tr>
+                    <tr id="row4Test10">
+                        <td id="7test10">Test 4</td>
+                        <td id="7auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="7new10" /></td>
+                    </tr>
+                    <tr id="row5Test10">
+                        <td id="8test10">Test 5</td>
+                        <td id="8auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="8new10" /></td>
+                    </tr>
+                    <tr id="row6Test10">
+                        <td id="9test10">Test 6</td>
+                        <td id="9auto10"></td>
+                        <td><input type="text" size="2" maxlength="3" id="9new10" /></td>
+                    </tr>
+                </table>
+                <textarea id="comment10" placeholder="Comment here" style="width: 50%"></textarea>
+
+                <br/>
+                 <input id="submitReviewButton" onclick="submitTable()" type="button" class="button" value="Submit Review"> </input></p>
+
+                 <!--
+                 <input id="submitTestButton" onclick="submitTableHelper()" type="button" class="button" value="Test"> </input></p>
+                    -->
+
+
+                 <input id="back" onclick="window.location.href = 'instructorMenu.html'" class="button" type="button" value="Back">
+                 <!-- <input id="submit" onclick="checkCookie()" type="button" value="cookie check"></input></p> -->
+            </input></p>
+        </form>
+        
+        <p id='backDiv'></p> <br />
+
+        <script>
+                clearDivs();
+                getExamIds();
+                var numQ = 0;
+                var qid_order = [];
+                var new_score = [];
+                var new_comment = [];
+                var updateString = "";
+                //document.getElementById("cons1").style.display = "none";
+                var numQuestions = [];
+                var pointsValue = [];
+
+                function clearDivs(){
+                    for(qp = 1; qp <= 10; qp++){
+                        temp = "gradeTable" + qp;
+                        document.getElementById(temp).style.display = "none";
+                    }
+                    for(pq = 1; pq <= 10; pq++){
+                        temp = "question" + pq;
+                        document.getElementById(temp).style.display = "none";
+                    }
+                    for(qop = 1; qop <= 10; qop++){
+                        temp = "comment" + qop;
+                        document.getElementById(temp).style.display = "none";
+                    }
+                    document.getElementById("submitReviewButton").style.display = "none";
+                }
+
+                function showDivs(){
+                    document.getElementById("submitReviewButton").style.display = "block";
+                }
+
+                function getExamIds(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText); 
+                        var response = JSON.parse(this.responseText);
+                        for(i = 0; i < response.exam_list.length; i++){
+                            var toy = document.createElement("nl");
+                            toy.innerHTML = "Exam Name: " + response.exam_list[i].exam_name + ", Exam ID: " + response.exam_list[i].exam_id + "<br/>";
+                            examNames.appendChild(toy);
+                        }
+                    }
+                }
+                req = "&request=exam_names";
+                xhttp.open("POST", "getExamIds.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(encodeURI(req));
+            }
+
+                function submitTableHelper(){
+                    updateComment();
+                    for(iQnum = 0; iQnum < numQ; iQnum++){
+                        //1new1
+                        //2new1
+                        for(iTest = 0; iTest < 9; iTest++){
+                            temp = (iTest + 1) + "new" + (iQnum + 1);
+                            if(document.getElementById(temp).value != ""){
+                                pointsValue[iQnum][iTest] = parseInt(document.getElementById(temp).value);
+                            }
+                        }
+                    }
+                    console.log("UPDATED SCORES CHECK");
+                    console.log(pointsValue);
+                    var zx = 1;
+                    for(z = 0; z < numQ; z++){
+                        updateString = updateString + "&question_" + zx + "_ID=" + qid_order[z] + 
+                        "&question_" + zx + "_comment=" + new_comment[z];
+                        zx++;
+                    }
+                    updateScore();
+                    console.log(updateString);
+                }
+
+                //for publishing the exam
+                function submitTable(){
+                    submitTableHelper();
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            console.log(this.responseText);
+                            var response = JSON.parse(this.responseText); 
+                            if(response.request_success == true){
+                                document.getElementById("testQ").innerHTML = "SUCCESSFULLY PUBLISHED EXAM";
+                                document.getElementById("testQ").style.display = "block";
+                            }
+                            else{
+                                document.getElementById("testQ").innerHTML = "UNSUCCESSFULLY PUBLISHED EXAM";
+                                document.getElementById("testQ").style.display = "block";
+                            }
+                        }
+                    }
+                    clearDivs();
+                    console.log(document.getElementById("studentId").value);
+
+                    var req = "&exam_id=" + document.getElementById("examId").value + 
+                    "&user_id=" + document.getElementById("studentId").value + "&question_num=" + numQ + updateString;
+                    console.log(req);
+                    xhttp.open("POST", "submitReviewExamInstructor.php", true);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send(encodeURI(req));
+                }
+
+                function updateScore(){
+                    //
+                    for(f = 0; f < pointsValue.length; f++){
+                        updateString = updateString + "&question_" + (f + 1) + "_tests_num=" + pointsValue[f].length;
+                        for(e = 0; e < pointsValue[f].length; e++){
+                            updateString = updateString + "&question_" + (f + 1) + "_test_score_" + (e + 1) + "=" + pointsValue[f][e];
+                        }
+                    }
+                }
+                function updateComment(){
+                    for(c = 0; c < numQ; c++){
+                        temp = "comment" + (c+1);
+                        new_comment[c] = document.getElementById(temp).value;
+                    }
+                }
+
+                function submitReviewHelper(){
+                    var zx = 1;
+                    for(z = 0; z < numQ; z++){
+                        updateString = updateString + "&question_" + zx + "_ID=" + qid_order[z] + 
+                        "&question_" + zx + "_score=" + new_score[z] +
+                        "&question_" + zx + "_comment=" + new_comment[z];
+                        zx++;
+                    }
+                    //console.log(updateString);
+                }
+
+                function submitReview(){
+                    submitReviewHelper();
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            console.log(this.responseText);
+                            var response = JSON.parse(this.responseText); 
+                            console.log(response);
+                            clearDivs();
+                            if(response.request_success == true){
+                                document.getElementById("testQ").innerHTML = "SUCCESSFULLY PUBLISHED EXAM";
+                                document.getElementById("testQ").style.display = "block";
+                            }
+                            else{
+                                document.getElementById("testQ").innerHTML = "UNSUCCESSFULLY PUBLISHED EXAM";
+                                document.getElementById("testQ").style.display = "block";
+                            }
+                        }
+                    }
+                    console.log(document.getElementById("studentId").value);
+                    var req = "&exam_id=" + document.getElementById("examId").value + 
+                    "&user_id=" + document.getElementById("studentId").value + "&question_num=" + numQ + updateString;
+                    console.log(req);
+                    xhttp.open("POST", "submitReviewExamInstructor.php", true);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send(encodeURI(req));
+                }
+
+                function reviewExamPost(){
+                    reviewTable();
+                    var xhttp = new XMLHttpRequest();
+                    var testQ = document.getElementById('testQ');
+                    xhttp.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            var response = JSON.parse(this.responseText);
+                            console.log(response);
+                            if(response.success == false){
+                                clearDivs();
+                                document.getElementById('testQ').innerHTML = "NOTHING MATCHED YOUR ID COMBO"
+                                document.getElementById("testQ").style.display = "block";
+                            }
+                            else{
+                                showDivs();
+                                numQ = response.answer_list.length; 
+                                document.getElementById("testQ").innerHTML = response.exam_name + "<br/><br/>"; 
+                                for(i = 0; i < response.answer_list.length; i++){
+                                    //console.log(response.answer_list[i]);
+                                    
+                                    var ele = document.createElement("div");
+                                    ele.setAttribute("id", "testDiv"+i);
+                                    ele.setAttribute("class", "inner");
+                                    ele.innerHTML = "Question ID: " + response.answer_list[i].question_id + ", " + response.answer_list[i].question_text + 
+                                    "<br/>Their Answer: " + response.answer_list[i].answer_text + ", Score: " + response.answer_list[i].score + "/" + response.answer_list[i].possible_points + "<br/>" +
+                                    response.answer_list[i].test_list[0].msg + " Test: Passed = " + response.answer_list[i].test_list[0].passed + "<br/>" +
+                                    response.answer_list[i].test_list[1].msg + ": Passed = " + response.answer_list[i].test_list[1].passed;
+                                    testQ.appendChild(ele);
+                                    /*
+                                    for(j = 0; j < response.answer_list[i].test_list[j].length; j++){
+                                        var ans = document.createElement("an");
+                                        an.innerHTML = "Function name test: " + response.answer_list[i].test_list[j];
+                                        testQ.appendChild(ele);
+                                    }
+                                    */
+                                    var NL = document.createElement("nl");
+                                    NL.innerHTML = "<br/>";
+                                    testQ.appendChild(NL);
+                                    
+                                }
+
+                                //THIS PART FILL THE COMMENTS AND POINTS ARRAY BEFORE ANY UPDATES
+                                for(m = 0; m < response.answer_list.length; m++){
+                                    qid_order[m] = response.answer_list[m].question_id;
+                                    new_score[m] = response.answer_list[m].score;
+                                    new_comment[m] = response.answer_list[m].instructor_comment;
+                                }
+                                console.log(qid_order);
+                                console.log(new_score);
+                                console.log(new_comment);
+                        }
+                        }
+                        
+                    }
+                    var req = "&exam_id=" + document.getElementById("examId").value + 
+                    "&student_id=" + document.getElementById("studentId").value;
+                    //console.log(req);
+                    xhttp.open("POST", "reviewExamInstructor.php", true);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send(encodeURI(req));
+                    
+            }
+            //this is when the exam is put in to fill the table
+            function reviewTable(){
+                document.getElementById("examNames").style.display = "none";
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            var response = JSON.parse(this.responseText);
+                            console.log(response);
+                                showDivs();
+                                numQ = response.answer_list.length; 
+                                for(i = 0; i < response.answer_list.length; i++){
+                                    numQuestions[i] = response.answer_list[i].test_list.length;
+                                    console.log(numQuestions);
+                                    temp = "gradeTable" + (i+1);
+                                    document.getElementById(temp).style.display = "block";
+                                    temp = "question" + (i+1);
+                                    document.getElementById(temp).style.display = "block";
+                                    temp = "comment" + (i+1);
+                                    document.getElementById(temp).style.display = "block";
+                                    //console.log(response.answer_list[i]);
+                                    temp = "question" + (i+1);
+                                    var testQ = document.getElementById(temp);
+                                    var ele = document.createElement("div");
+                                    ele.setAttribute("id", "testDiv"+i);
+                                    ele.setAttribute("class", "inner");
+                                    ele.innerHTML = response.answer_list[i].question_text + 
+                                    "<br/>Student's Answer: " + response.answer_list[i].answer_text;
+                                    testQ.appendChild(ele);
+                                    //fill in first column
+                                    for(ty = 0; ty < response.answer_list[i].test_list.length; ty++){
+                                        temp = (ty + 1) + "test" + (i + 1);
+                                        document.getElementById(temp).innerHTML = response.answer_list[i].test_list[ty].msg;
+                                    }
+                                    pointsValue[i] = new Array();
+                                    //fill in second column
+                                    for(tv = 0; tv < response.answer_list[i].test_list.length; tv++){
+                                        temp = (tv + 1) + "auto" + (i + 1);
+                                        document.getElementById(temp).innerHTML = response.answer_list[i].test_list[tv].score;
+                                        pointsValue[i][tv] = response.answer_list[i].test_list[tv].score;
+                                    }
+                                    console.log(pointsValue);
+
+                                    //hide columns not needed
+                                    colToHide = response.answer_list[i].test_list.length;
+                                    for(bh = 9; bh > colToHide; bh--){
+                                        //row6Test1
+                                        temp = "row" + (bh - 3) + "Test" + (i + 1);
+                                        document.getElementById(temp).style.display = "none";
+                                    }
+
+                                    
+
+                                    var NL = document.createElement("nl");
+                                    NL.innerHTML = "<br/>";
+                                    testQ.appendChild(NL);
+                                    
+                                }
+
+                                //THIS PART FILL THE COMMENTS AND POINTS ARRAY BEFORE ANY UPDATES
+                                for(m = 0; m < response.answer_list.length; m++){
+                                    qid_order[m] = response.answer_list[m].question_id;
+                                    new_score[m] = response.answer_list[m].score;
+                                    new_comment[m] = response.answer_list[m].instructor_comment;
+                                }
+                                console.log(qid_order);
+                                console.log(new_score);
+                                console.log(new_comment);
+                        }
+                        
+                    }
+                    var req = "&exam_id=" + document.getElementById("examId").value + 
+                    "&student_id=" + document.getElementById("studentId").value;
+                    //console.log(req);
+                    xhttp.open("POST", "reviewExamInstructor.php", true);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send(encodeURI(req));
+                    
+            }
+            
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var k = 0; k < ca.length; k++) {
+                    var c = ca[k];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                var userId = getCookie("user_id");
+                //document.getElementById("backDiv").innerHTML = userId
+                return userId;
+            }
+
+        </script>
+    </body>
+</html>
