@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Instructor Menu</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h2 style = "text-align:start">Instructor Menu</h2>
+        <form name="alpha" action="beta.php" method="post">
+                 <a href="addQuestion.html"> Add Questions </a> <br/><br/>
+                 <a href="createExam.html"> Create Exam </a> <br/><br/>
+                 <a href="reviewExamsInstructor.html"> Review Exams </a> <br/><br/>
+                 <input id="back" onclick="window.location.href = 'beta.html'" class="button" type="button" value="Back"></input></p>
+                 <!-- <input id="submit" onclick="checkCookie()" type="button" class="button" value="cookie check"></input></p> -->
+        </form>
+        <p id='backDiv'></p> <br />
+
+        <script>
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                var userId = getCookie("user_id");
+                document.getElementById("backDiv").innerHTML = userId
+            }
+            
+                
+        </script>
+    </body>
+</html>
